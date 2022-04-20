@@ -193,7 +193,7 @@ foreach ($requests as $request) {
                 $formData = $request->requestData->formData;
 
                 if (!property_exists($formData, 'Anrede')) {
-                    throw new \Exception("Das Feld 'Anrede' ist nicht vorhanden.");
+                    throw new Exception("Das Feld 'Anrede' ist nicht vorhanden.");
                 }
 
                 if ($formData->Vorname === 'Susanne' && $formData->Anrede !== 'w') {
@@ -240,6 +240,7 @@ foreach ($requests as $request) {
                     $col = new stdClass();
                     $col->caption = 'Vorname';
                     $col->valueField = 'vorname';
+                    $col->editable = true;
                     $response->responseData->columns[] = $col;
                     unset ($col);
 
@@ -276,15 +277,9 @@ foreach ($requests as $request) {
                     $col = new stdClass();
                     $col->xtype = 'kijs.gui.grid.columnConfig.Icon';
                     $col->caption = 'Icon';
+                    $col->valueField = 'vorname';
                     $col->iconCharField = 'icon';
                     $col->iconColorField = 'color';
-                    $response->responseData->columns[] = $col;
-                    unset ($col);
-
-                    $col = new stdClass();
-                    $col->xtype = 'kijs.gui.grid.columnConfig.Button';
-                    $col->caption = 'Button';
-                    $col->valueField = 'buttonConfig';
                     $response->responseData->columns[] = $col;
                     unset ($col);
 
@@ -295,6 +290,40 @@ foreach ($requests as $request) {
                     $response->responseData->columns[] = $col;
                     unset ($col);
 
+
+                    $col = new stdClass();
+                    $col->caption = 'Combo';
+                    $col->valueField = 'combovalue';
+                    $col->displayField = 'combodisplay';
+                    $col->editable = true;
+                    $col->clicksToEdit = 1;
+                    $col->editorXtype = 'kijs.gui.field.Combo';
+                    $col->editorConfig = new stdClass();
+                    $col->editorConfig->data = [
+                        ['value' => 1, 'caption' => 'Datensatz 1'],
+                        ['value' => 2, 'caption' => 'Datensatz 2'],
+                        ['value' => 3, 'caption' => 'Datensatz 3']
+                    ];
+                    $response->responseData->columns[] = $col;
+                    unset ($col);
+
+                    $col = new stdClass();
+                    $col->xtype = 'kijs.gui.grid.columnConfig.Number';
+                    $col->caption = 'Zahl 1';
+                    $col->valueField = 'number1';
+                    $col->editable = true;
+                    $col->clicksToEdit = 1;
+                    $response->responseData->columns[] = $col;
+                    unset ($col);
+
+                    $col = new stdClass();
+                    $col->xtype = 'kijs.gui.grid.columnConfig.Number';
+                    $col->caption = 'Zahl 2';
+                    $col->valueField = 'number2';
+                    $col->editable = true;
+                    $col->clicksToEdit = 1;
+                    $response->responseData->columns[] = $col;
+                    unset ($col);
 
                     $col = new stdClass();
                     $col->xtype = 'kijs.gui.grid.columnConfig.Checkbox';
@@ -341,16 +370,10 @@ foreach ($requests as $request) {
                         $row->{'field_' . strtolower(substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ', $y, 1))} = substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ', $y, 1) . $rwId;
                     }
 
-
-                    $button = new stdClass();
-                    $button->caption = 'Testbutton ' . $rwId;
-                    $button->iconChar = '&#xf0e2';
-                    $button->on = new stdClass();
-                    //$button->on->click = 'testfunction';
-
-                    $row->buttonConfig = $button;
                     $row->vorname = array_key_exists($rwId, $vornamen) ? $vornamen[$rwId] : '';
                     $row->number = $rwId;
+                    $row->number1 = $rwId*2;
+                    $row->number2 = null;
                     $row->date = time() + (3600 * 24 * $rwId);
                     $row->icon = '&#x' . dechex(61440 + $rwId);
                     $row->color = '#' . dechex($rwId * 100);
