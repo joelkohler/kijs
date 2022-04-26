@@ -57,8 +57,10 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
     set isDirty(val) {
         if (val === false) {
             this._originalValue = kijs.toString(this.value);
+            this._dom.clsRemove('kijs-grid-cell-dirty');
         } else {
             this._originalValue = null;
+            this._dom.clsAdd('kijs-grid-cell-dirty');
         }
     }
 
@@ -95,7 +97,6 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
      * @returns {undefined}
      */
     setValue(value, silent=false, markDirty=true, updateDataRow=true) {
-
         let changed = kijs.toString(value) !== kijs.toString(this._dom.html);
 
         // HTML aktualisieren
@@ -112,9 +113,9 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
 
         // change event bei cell, row und grid aufrufen.
         if (!silent && changed) {
-            this.raiseEvent('change', {value: value});
-            this.row.raiseEvent('change', {value: value, cell: this});
-            this.row.grid.raiseEvent('change', {value: value, row: this.row, cell: this});
+            this.raiseEvent('change', {value: value, valueDisplay: value});
+            this.row.raiseEvent('change', {value: value, valueDisplay: value, cell: this});
+            this.row.grid.raiseEvent('change', {value: value, valueDisplay: value, row: this.row, cell: this});
         }
 
         if (this.isRendered) {
@@ -155,7 +156,7 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
             // Nach dem rendern den focus aufs Feld legen, damit beim blur der Editor wieder geschlossen wird.
             this._cellEditor.on('afterRender', function() {
                 kijs.defer(function() {
-                    this._cellEditor.focus();
+                    this._cellEditor.focus(false, true);
                 }, 100, this);
             }, this);
 
@@ -190,7 +191,6 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
 
             this.dom.clsRemove('kijs-celledit');
 
-
             if (cancelEdit) {
                 this.setValue(this.value, true, false, false);
 
@@ -209,6 +209,7 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
                 }
 
                 // Cell-Value setzen
+                // wird mit silent aufgerufen, damit der Event separat aufgerufen und valueDisplay mitgegeben werden kann.
                 if (this.htmlDisplayType === 'html') {
                     this.setValue(valDspHtml, true, true, false);
                 } else {
@@ -321,6 +322,13 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
         // sichtbar?
         this.visible = this._columnConfig.visible;
 
+        // Editable-Zeilen: Klasse hinzufügen
+        if (this._columnConfig.editable) {
+            this._dom.clsAdd('kijs-grid-cell-editable');
+        } else {
+            this._dom.clsRemove('kijs-grid-cell-editable');
+        }
+
         // Dirty-Zeilen: Klasse hinzufügen
         if (this.isDirty) {
             this._dom.clsAdd('kijs-grid-cell-dirty');
@@ -363,7 +371,6 @@ kijs.gui.grid.cell.Cell = class kijs_gui_grid_cell_Cell extends kijs.gui.Element
             // Event auslösen.
             this.raiseEvent('destruct');
         }
-
 
         // Variablen (Objekte/Arrays) leeren
 
