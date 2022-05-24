@@ -363,7 +363,7 @@ kijs.gui.field.Checkbox = class kijs_gui_field_Checkbox extends kijs.gui.field.F
         // Eingabe erforderlich
         if (this._required) {
             if (!value) {
-                this._errors.push(kijs.getText('Dieses Checkbox muss bestätigt werden'));
+                this._errors.push(kijs.getText('Diese Checkbox muss bestätigt werden'));
             }
         }
     }

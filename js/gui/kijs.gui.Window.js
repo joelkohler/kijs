@@ -65,6 +65,7 @@ kijs.gui.Window = class kijs_gui_Window extends kijs.gui.Panel {
 
         // Listeners
         this.on('mouseDown', this._onMouseDown, this);
+        this.on('afterResize', this.center, this);
 
         // Config anwenden
         if (kijs.isObject(config)) {
@@ -219,12 +220,12 @@ kijs.gui.Window = class kijs_gui_Window extends kijs.gui.Panel {
 
         super.restore();
 
-        // evtl. Fester zentrieren
+        // vtl. Fester zentrieren
         if (!this._dom.hasLeft || !this._dom.hasTop) {
             this.center(true);
         }
 
-        // Sicherstellen, dass es platz hat
+        // Sicherstellen, dass es Platz hat
         this._adjustPositionToTarget(true);
 
         // afterResize-Event wieder aktivieren
@@ -404,8 +405,8 @@ kijs.gui.Window = class kijs_gui_Window extends kijs.gui.Panel {
         this.top = y;
     }
 
-    _onDocumentMouseUp(e) {
-        // Beim ersten auslösen Listeners gleich wieder entfernen
+    _onDocumentMouseUp() {
+        // Beim ersten Auslösen Listeners gleich wieder entfernen
         kijs.Dom.removeEventListener('mousemove', document, this);
         kijs.Dom.removeEventListener('mouseup', document, this);
 
@@ -418,7 +419,7 @@ kijs.gui.Window = class kijs_gui_Window extends kijs.gui.Panel {
         this._dragInitialPos = null;
     }
 
-    _onMouseDown(e) {
+    _onMouseDown() {
         this.toFront();
     }
 
@@ -428,7 +429,7 @@ kijs.gui.Window = class kijs_gui_Window extends kijs.gui.Panel {
      * @returns {undefined}
      */
     _onTargetElAfterResize(e) {
-        // Sicherstellen, dass das Fenster im Target platz hat
+        // Sicherstellen, dass das Fenster im Target Platz hat
         this._adjustPositionToTarget(true);
 
         // Falls die eigene Grösse geändert hat: das eigene afterResize-Event auslösen
@@ -436,7 +437,7 @@ kijs.gui.Window = class kijs_gui_Window extends kijs.gui.Panel {
     }
 
     _onTargetElChangeVisibility(e) {
-        // Sichbarkeit ändern
+        // Sichtbarkeit ändern
         this.visible = e.visible;
     }
 
@@ -445,7 +446,7 @@ kijs.gui.Window = class kijs_gui_Window extends kijs.gui.Panel {
     }
 
     _onWindowResize(e) {
-         // Sicherstellen, dass das Fenster im Target platz hat
+         // Sicherstellen, dass das Fenster im Target Platz hat
         this._adjustPositionToTarget(true);
 
         this._raiseAfterResizeEvent(true, e);
