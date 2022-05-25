@@ -396,7 +396,9 @@ kijs.gui.field.Combo = class kijs_gui_field_Combo extends kijs.gui.field.Field {
      * @returns {undefined}
      */
     _setProposal(key) {
-        let inputVal = this._inputDom.nodeAttributeGet('value'), matchVal='';
+        let inputVal = this._inputDom.nodeAttributeGet('value'),
+            matchVal='';
+
         inputVal = kijs.toString(inputVal).trim();
 
         // Exakten Wert suchen
@@ -408,17 +410,20 @@ kijs.gui.field.Combo = class kijs_gui_field_Combo extends kijs.gui.field.Field {
                 }
             }, this);
 
-            // Selber Beginn suchen
+            // Beginn suchen
             if (matchVal === '') {
                 kijs.Array.each(this._listViewEl.data, function(row) {
                     let caption = row[this.captionField];
 
-                    if (kijs.isString(row[this.captionField])
-                            && inputVal.length <= caption.length
-                            && caption.substr(0, inputVal.length).toLowerCase() === inputVal.toLowerCase()) {
-                        matchVal = row[this.captionField];
+                    if (
+                        kijs.isString(caption)
+                        && inputVal.length <= caption.length
+                        && caption.substr(0, inputVal.length).toLowerCase() === inputVal.toLowerCase()
+                    ) {
+                        matchVal = caption;
                         return false;
                     }
+
                 }, this);
             }
 
@@ -433,12 +438,13 @@ kijs.gui.field.Combo = class kijs_gui_field_Combo extends kijs.gui.field.Field {
             }
 
             // Elemente des Dropdowns filtern
-            this._listViewEl.applyFilters({field:this.captionField, value: inputVal});
+            this._listViewEl.applyFilters({field:this.captionField, value: inputVal, compare: 'part'});
 
         } else if (key === 'Backspace' || key === 'Delete') {
-            this._listViewEl.applyFilters({field:this.captionField, value: inputVal});
+            this._listViewEl.applyFilters({field:this.captionField, value: inputVal, compare: 'part'});
 
         } else {
+
             // Filter des Dropdowns zurücksetzen
             this._listViewEl.applyFilters(null);
         }

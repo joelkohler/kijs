@@ -20,6 +20,8 @@ kijs.gui.Button = class kijs_gui_Button extends kijs.gui.Element {
         this._iconEl = new kijs.gui.Icon({ parent: this });
         this._icon2El = new kijs.gui.Icon({ parent: this, cls:'kijs-icon2' });
 
+        this._menu = null;
+
         this._badgeDom = new kijs.gui.Dom({
             cls: 'kijs-badge',
             nodeTagName: 'span'
@@ -46,14 +48,21 @@ kijs.gui.Button = class kijs_gui_Button extends kijs.gui.Element {
             captionHtmlDisplayType: { target: 'htmlDisplayType', context: this._captionDom },
             captionStyle: { fn: 'assign', target: 'style', context: this._captionDom },
             icon: { target: 'icon' },
+            iconMap: { target: 'iconMap', context: this._iconEl },
             iconChar: { target: 'iconChar', context: this._iconEl },
             iconCls: { target: 'iconCls', context: this._iconEl },
             iconColor: { target: 'iconColor', context: this._iconEl },
             icon2: { target: 'icon2' },
+            icon2Map: { target: 'iconMap', context: this._icon2El },
             icon2Char: { target: 'iconChar', context: this._icon2El },
             icon2Cls: { target: 'iconCls', context: this._icon2El },
             icon2Color: { target: 'iconColor', context: this._icon2El },
             isDefault: { target: 'isDefault' },
+
+            menuElements: { target: 'menuElements', prio: 200 },
+            menuCloseOnClick: { target: 'menuCloseOnClick', prio: 201 },
+            menuDirection: { target: 'menuDirection', prio: 200 },
+            menuExpandOnHover: { target: 'menuExpandOnHover', prio: 200 },
 
             disabled: { prio: 100, target: 'disabled' }
         });
@@ -142,29 +151,15 @@ kijs.gui.Button = class kijs_gui_Button extends kijs.gui.Element {
     }
 
     get iconChar() { return this._iconEl.iconChar; }
-    set iconChar(val) {
-        this._iconEl.iconChar = val;
-        if (this.isRendered) {
-            this.render();
-        }
-    }
+    set iconChar(val) { this._iconEl.iconChar = val; }
 
     get iconCls() { return this._iconEl.iconCls; }
-    set iconCls(val) {
-        this._iconEl.iconCls = val;
-        if (this.isRendered) {
-            this.render();
-        }
-    }
+    set iconCls(val) { this._iconEl.iconCls = val; }
 
     get iconColor() { return this._iconEl.iconColor; }
-    set iconColor(val) {
-        this._iconEl.iconColor = val;
-        if (this.isRendered) {
-            this.render();
-        }
-    }
+    set iconColor(val) { this._iconEl.iconColor = val; }
 
+    set iconMap(val) { this._iconEl.iconMap = val; }
 
     get icon2() { return this._icon2El; }
     /**
@@ -203,28 +198,15 @@ kijs.gui.Button = class kijs_gui_Button extends kijs.gui.Element {
     }
 
     get icon2Char() { return this._icon2El.iconChar; }
-    set icon2Char(val) {
-        this._icon2El.iconChar = val;
-        if (this.isRendered) {
-            this.render();
-        }
-    }
+    set icon2Char(val) { this._icon2El.iconChar = val; }
 
     get icon2Cls() { return this._icon2El.iconCls; }
-    set icon2Cls(val) {
-        this._icon2El.iconCls = val;
-        if (this.isRendered) {
-            this.render();
-        }
-    }
+    set icon2Cls(val) { this._icon2El.iconCls = val; }
 
     get icon2Color() { return this._icon2El.iconColor; }
-    set icon2Color(val) {
-        this._icon2El.iconColor = val;
-        if (this.isRendered) {
-            this.render();
-        }
-    }
+    set icon2Color(val) { this._icon2El.iconColor = val; }
+
+    set icon2Map(val) { this._icon2El.iconMap = val; }
 
     get isDefault() {
         return this._dom.clsHas('kijs-default');
@@ -241,23 +223,43 @@ kijs.gui.Button = class kijs_gui_Button extends kijs.gui.Element {
     get isEmpty() { return this._captionDom.isEmpty && this._iconEl.isEmpty && this._icon2El.isEmpty && this._badgeDom.isEmpty; }
 
 
+    get menu() { return this._menu; }
+    set menu(val) {
+        if (!val instanceof kijs.gui.Menu) {
+            throw new kijs.Error(`invalid value for kijs.gui.Button::menu`);
+        }
+        this._menu = val;
+    }
 
-
-    // TODO: Instanz eines Menüs. Beim Klicken, wird dieses geöffnet
-        /*if (this.menu) {
-            if (kijs.isEmpty(this.menu.targetEl)) {
-                this.menu.targetEl = this;
-            }
-            this.on('click', function(e, el){
-                this.menu.show();
-            }, this);
-        }*/
-
+    set menuElements(val) { this._createMenu().add(val); }
+    set menuCloseOnClick(val) { this._createMenu().closeOnClick = val; }
+    set menuDirection(val) { this._createMenu().direction = val; }
+    set menuExpandOnHover(val) { this._createMenu().expandOnHover = val; }
 
 
     // --------------------------------------------------------------
     // MEMBERS
     // --------------------------------------------------------------
+
+    /**
+     * Erstellt die Instanz vom Menu.
+     * @returns {kijs.gui.Menu}
+     */
+    _createMenu() {
+        if (!this._menu) {
+            this._menu = new kijs.gui.Menu({
+                parent: this,
+                button: this
+            });
+        }
+
+        if (!this.icon2Char) {
+            this.icon2Map = this._menu.getIconMap();
+        }
+
+        return this._menu;
+    }
+
     // Overwrite
     render(superCall) {
         super.render(true);
@@ -307,6 +309,11 @@ kijs.gui.Button = class kijs_gui_Button extends kijs.gui.Element {
         this._icon2El.unrender();
         this._captionDom.unrender();
         this._badgeDom.unrender();
+
+        if (this._menu) {
+            this._menu.unrender();
+        }
+
         super.unrender(true);
     }
 
@@ -336,11 +343,15 @@ kijs.gui.Button = class kijs_gui_Button extends kijs.gui.Element {
         if (this._icon2El) {
             this._icon2El.destruct();
         }
+        if (this._menu) {
+            this._menu.destruct();
+        }
 
         // Variablen (Objekte/Arrays) leeren
         this._badgeDom = null;
         this._captionDom = null;
         this._iconEl = null;
+        this._menu = null;
 
         // Basisklasse entladen
         super.destruct(true);

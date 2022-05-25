@@ -1,3 +1,18 @@
+Version 1.2.6
+================================================================================
+Änderungen
+----------
+ - kijs.gui.MenuButton entfernt. Es kann neu ein Menu in allen Buttons gemacht werden.
+    > !!! ANPASSUNG !!! kijs.gui.MenuButton mit kijs.gui.Button ersetzen, elements in menuElements verschieben
+ - iconChar: Neu sollte nicht mehr das HTML-Entity angegeben werden, sondern der Hex-Wert als Zahl.
+    > FA-Icons sollten neu mit iconMap: 'kijs.iconMap.Fa.icon-name-hier' eingebunden werden.
+ - kijs.getObjectFromNamespace() ersetzt mit kijs.getClassFromXtype()
+
+Neue Klassen
+-------------
+ - kijs.gui.Menu für Kontextmenu und Dropdown-Menu
+
+
 Version 1.2.5
 ================================================================================
 Änderungen
@@ -9,6 +24,7 @@ Grid
 Anderes
  - kijs.keys entfernt, da keyCodes deprecated sind und nicht mehr verwendet werden sollten.
 
+
 Version 1.2.4
 ================================================================================
 Grid
@@ -19,6 +35,8 @@ Combo
 - onChange mit oldVal
 Anderes
 - Maske weniger schwarz
+- File-Upload decodiert neu Pfad und Dateiname. !!! ANPASSUNG PHP NÖTIG (urldecode) !!!
+- Tooltip für Tabellenspalten
 
 
 Version 1.2.3

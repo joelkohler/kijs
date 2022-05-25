@@ -1,8 +1,8 @@
 /* global kijs */
 
 // --------------------------------------------------------------
-// kijs.gui (Static)
+// kijs.iconMap (Static)
 // --------------------------------------------------------------
-kijs.gui = class kijs_gui {
+kijs.iconMap = class kijs_iconMap {
     
 };

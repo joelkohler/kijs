@@ -29,10 +29,10 @@ kijs.gui.grid.filter.Filter = class kijs_gui_grid_filter_Filter extends kijs.gui
             cls: 'kijs-grid-filter-reset'
         });
 
-        this._menuButton = new kijs.gui.MenuButton({
+        this._menuButton = new kijs.gui.Button({
             parent: this,
-            icon2Char: '&#xf0b0', // fa-filter
-            elements: []
+            icon2Map: 'kijs.iconMap.Fa.filter', // fa-filter
+            menuElements: []
         });
 
 
@@ -60,11 +60,14 @@ kijs.gui.grid.filter.Filter = class kijs_gui_grid_filter_Filter extends kijs.gui
 
     get columnConfig() { return this._columnConfig; }
     get filter() {
-        return {
+        let flt = {
             type: '',
-            valueField: this._columnConfig.valueField,
-            checkboxFilter: this.checkboxFilterValues
+            valueField: this._columnConfig.valueField
         };
+        if (this._checkboxFilterGroup) {
+            flt.checkboxFilter = this.checkboxFilterValues;
+        }
+        return flt;
     }
     get isFiltered() { return !!(this.checkboxFilterValues.length > 0); }
 
@@ -127,21 +130,21 @@ kijs.gui.grid.filter.Filter = class kijs_gui_grid_filter_Filter extends kijs.gui
     _getDefaultMenuButtons() {
         return [{
             caption : kijs.getText('Filter löschen'),
-            iconChar: '&#xf00d', // fa-times
+            iconMap: 'kijs.iconMap.Fa.filter-circle-xmark',
             on: {
                 click: function() {
                     this.reset();
-                    this._menuButton.menuCloseAll();
+                    this._menuButton.menu.close();
                 },
                 context: this
             }
         },{
             caption : kijs.getText('Alle Filter löschen'),
-            iconChar: '&#xf00d', // fa-times
+            iconMap: 'kijs.iconMap.Fa.filter-circle-xmark',
             on: {
                 click: function() {
                     this.parent.reset();
-                    this._menuButton.menuCloseAll();
+                    this._menuButton.menu.close();
                 },
                 context: this
             }
@@ -161,7 +164,8 @@ kijs.gui.grid.filter.Filter = class kijs_gui_grid_filter_Filter extends kijs.gui
         this._searchContainer.renderTo(this._dom.node);
         this._removeFilterIcon.renderTo(this._dom.node);
 
-        this._menuButton.elements = this._getMenuButtons();
+        this._menuButton.menu.removeAll();
+        this._menuButton.menu.add(this._getMenuButtons());
         this._menuButton.renderTo(this._removeFilterIcon.node);
 
         // breite

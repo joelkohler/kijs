@@ -9,7 +9,7 @@ window.kijs = class kijs {
     // --------------------------------------------------------------
     // STATIC GETTERS / SETTERS
     // --------------------------------------------------------------
-    static get version() { return '1.2.5'; }
+    static get version() { return '1.2.6'; }
 
 
     // --------------------------------------------------------------
@@ -79,6 +79,26 @@ window.kijs = class kijs {
             return 0;
         }
     }
+    
+    /**
+     * Erstellt eine Klasse/Objekt aus einem Namespace (xtype, iconMap)
+     * @param {String} xtype    Beispiel: 'kijs.gui.Element'
+     * @returns {kijs.gui.Element|Object|null}
+     */
+    static getClassFromXtype(xtype) {
+        const parts = xtype.split('.');
+        let parent = window;
+        
+        for (let i=0; i<parts.length; i++) {
+            let part = parts[i];
+            if (!parent[part]) {
+                console.log(part);
+                return null;
+            }
+            parent = parent[part];
+        }
+        return parent;
+    }
 
     /**
      * Gibt die Parameter zurück, die mittels GET an die URL übergeben werden
@@ -88,28 +108,6 @@ window.kijs = class kijs {
     static getGetParameter(parameterName) {
         console.warn(`DEPRECATED: use "kijs.Navigator.getGetParameter" instead of "kijs.getGetParameter"`);
         return kijs.Navigator.getGetParameter(parameterName);
-    }
-
-    /**
-     * Gibt das Objekt/Funktion eines Namespaces zurück.
-     * Falls der Namespace nicht existiert wird false zurückgegeben.
-     * @param {String} name - Name des Namespace. Beispiel: 'kijs.gui.field'
-     * @returns {Function|Object|false}
-     */
-    static getObjectFromNamespace(name) {
-        const parts = name.split('.');
-        let parent = window;
-        let part;
-
-        for (let i=0; i<parts.length; i++) {
-            part = parts[i];
-            if (!parent[part]) {
-                return false;
-            }
-            parent = parent[part];
-        }
-
-        return parent;
     }
 
     /**

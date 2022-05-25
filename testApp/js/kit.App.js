@@ -57,14 +57,14 @@ kit.App = class kit_App {
                     headerBarElements:[
                         {
                             xtype: 'kijs.gui.Button',
-                            iconChar: '&#xf059'
+                            iconMap: 'kijs.iconMap.Fa.circle-question'
                         },{
                             xtype: 'kijs.gui.Button',
-                            iconChar: '&#xf059',
+                            iconMap: 'kijs.iconMap.Fa.circle-info',
                             disabled: true
                         },{
                             xtype: 'kijs.gui.Button',
-                            iconChar: '&#xf0ee',
+                            iconMap: 'kijs.iconMap.Fa.file-arrow-up',
                             on: {
                                 click: function() {
                                     this._uploadDialog.showFileSelectDialog();
@@ -108,8 +108,8 @@ kit.App = class kit_App {
                         {
                             xtype: 'kijs.gui.Panel',
                             caption: 'Navigation',
-                            iconChar: '&#xf110',
-                            iconCls: 'kijs-pulse',
+                            iconMap: 'kijs.iconMap.Fa.spinner',
+                            iconCls: 'fa-solid kijs-pulse',
                             collapsible: 'left',
                             width: 180,
                             style: {
@@ -138,7 +138,7 @@ kit.App = class kit_App {
                                                 {
                                                     xtype: 'kijs.gui.Tree',
                                                     caption: 'Element 1',
-//                                                    iconChar: '&#xf114',
+//                                                    iconChar: 0xf114,
 //                                                    elements: this.createTreeRecursive(6, 3),
 //                                                    iconCls: 'icoFolder32',
 //                                                    expandedIconCls: 'icoFolderOpen32',
@@ -160,7 +160,7 @@ kit.App = class kit_App {
                                                 {
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'Wechsel zu 2',
-                                                    iconChar: '&#xf0d0',
+                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -184,7 +184,7 @@ kit.App = class kit_App {
                                                 {
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'fade',
-                                                    iconChar: '&#xf0d0',
+                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -195,7 +195,7 @@ kit.App = class kit_App {
                                                 },{
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'slideLeft 1s',
-                                                    iconChar: '&#xf0d0',
+                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -206,7 +206,7 @@ kit.App = class kit_App {
                                                 },{
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'slideRight',
-                                                    iconChar: '&#xf0d0',
+                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -217,7 +217,7 @@ kit.App = class kit_App {
                                                 },{
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'slideTop',
-                                                    iconChar: '&#xf0d0',
+                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -228,7 +228,7 @@ kit.App = class kit_App {
                                                 },{
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'slideBottom',
-                                                    iconChar: '&#xf0d0',
+                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -239,7 +239,7 @@ kit.App = class kit_App {
                                                 },{
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'Add panel',
-                                                    iconChar: '&#xf0d0',
+                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -257,7 +257,7 @@ kit.App = class kit_App {
                                                                 elements: [{
                                                                     xtype: 'kijs.gui.Button',
                                                                     caption: 'Remove panel',
-                                                                    iconChar: '&#xf0d0',
+                                                                    iconChar: 0xf0d0,
                                                                     tooltip: 'test',
                                                                     on: {
                                                                         click: function() {
@@ -284,7 +284,7 @@ kit.App = class kit_App {
                         {
                             xtype: 'kijs.gui.Panel',
                             caption: 'Formular',
-                            iconChar: '&#xf2bc',
+                            iconMap: 'kijs.iconMap.Fa.gamepad',
                             footerCaption: 'FooterBar',
                             style: {
                                 flex: 1,
@@ -297,7 +297,7 @@ kit.App = class kit_App {
                             headerBarElements:[
                                 {
                                     xtype: 'kijs.gui.Button',
-                                    iconChar: '&#xf085',
+                                    iconMap: 'kijs.iconMap.Fa.envelope',
                                     badgeText: '4'
                                 }
                             ],
@@ -313,23 +313,23 @@ kit.App = class kit_App {
                                         {
                                             xtype: 'kijs.gui.Button',
                                             caption: 'Neu',
-                                            iconChar: '&#xf055'
+                                            iconMap: 'kijs.iconMap.Fa.circle-plus'
                                         },{
                                             xtype: 'kijs.gui.Button',
                                             caption: 'Duplizieren',
-                                            iconChar: '&#xf0c5'
+                                            iconMap: 'kijs.iconMap.Fa.copy'
                                         },{
                                             xtype: 'kijs.gui.Button',
                                             caption: 'Aktionen',
-                                            iconChar: '&#xf0e7'
+                                            iconMap: 'kijs.iconMap.Fa.bolt'
                                         },{
                                             xtype: 'kijs.gui.Button',
                                             caption: 'Löschen',
-                                            iconChar: '&#xf1f8'
+                                            iconMap: 'kijs.iconMap.Fa.trash-can'
                                         },{
                                             xtype: 'kijs.gui.Button',
                                             caption: 'Address Load',
-                                            iconChar: '&#xf0e7',
+                                            iconMap: 'kijs.iconMap.Fa.arrows-rotate',
                                             on: {
                                                 click: function() {
                                                     const addressPanel = this.upX('kijs.gui.Panel').down('addressPanel');
@@ -457,6 +457,47 @@ kit.App = class kit_App {
                                         maxLength: 50,
                                         style: {marginBottom: '4px'}
                                     },
+                                    on: {
+                                        rightClick: function(e) {
+                                            e.nodeEvent.preventDefault();
+
+                                            let menu = new kijs.gui.Menu({
+                                                closeOnClick: true,
+                                                elements: [{
+                                                    caption:'Windows',
+                                                    iconMap: 'kijs.iconMap.Fa.windows',
+                                                    on: {click:() => { kijs.gui.MsgBox.alert('You choose:', 'Windows!'); }}
+                                                },{
+                                                    caption:'Apple',
+                                                    iconMap: 'kijs.iconMap.Fa.apple',
+                                                    on: {click:() => { kijs.gui.MsgBox.alert('You choose:', 'Apple!'); }}
+                                                },{
+                                                    caption:'Weitere',
+                                                    iconMap: 'kijs.iconMap.Fa.angles-right',
+                                                    menuElements: [{
+                                                        caption:'Linux',
+                                                        iconMap: 'kijs.iconMap.Fa.linux',
+                                                        on: {click:() => {
+                                                                kijs.gui.MsgBox.alert('You choose:', 'Linux!');
+                                                            }}
+                                                    },{
+                                                        caption:'Android',
+                                                        iconMap: 'kijs.iconMap.Fa.android',
+                                                        on: {click:() => {
+                                                                kijs.gui.MsgBox.alert('You choose:', 'Android!');
+                                                            }}
+                                                    },{
+                                                        caption:'iOS',
+                                                        iconMap: 'kijs.iconMap.Fa.apple',
+                                                        on: {click:() => { kijs.gui.MsgBox.alert('You choose:', 'iOS!'); }}
+                                                    }]
+                                                }]
+                                            });
+                                            menu.show(e.nodeEvent.pageX, e.nodeEvent.pageY);
+
+                                        },
+                                        context: this
+                                    },
                                     elements: [
                                         {
                                             xtype: 'kijs.gui.field.Combo',
@@ -470,7 +511,7 @@ kit.App = class kit_App {
                                             elements: [{
                                                 xtype: 'kijs.gui.Button',
                                                 cls: 'kijs-inline',
-                                                iconChar: '&#xf111',
+                                                iconMap: 'kijs.iconMap.Fa.coins',
                                                 on: {
                                                     click: function() {
                                                         this.up('ServerSortCombo').value = 3084;
@@ -488,7 +529,7 @@ kit.App = class kit_App {
                                             spinIconVisible: true,
                                             elements: [{
                                                 xtype: 'kijs.gui.Button',
-                                                iconChar: '&#xf111',
+                                                iconMap: 'kijs.iconMap.Fa.coins',
                                                 on: {
                                                     click: function() {
                                                         this.up('ServerSortCombo').value = 3084;
@@ -566,7 +607,7 @@ kit.App = class kit_App {
                                             elements: [
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf0d0',
+                                                    iconMap: 'kijs.iconMap.Fa.computer',
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -587,7 +628,7 @@ kit.App = class kit_App {
                                             xtype: 'kijs.gui.field.Checkbox',
                                             name: 'CheckboxColor',
                                             label: '... mit Farbe',
-                                            iconChar: '&#xf111',
+                                            iconMap: 'kijs.iconMap.Fa.stamp',
                                             iconColor: '#ff8800',
                                             caption: 'Caption',
                                             width: 250
@@ -596,9 +637,9 @@ kit.App = class kit_App {
                                             name: 'CheckboxOption',
                                             label: '... als Option',
                                             caption: 'Caption',
-                                            checkedIconChar: '&#xf05d',
-                                            uncheckedIconChar: '&#xf10c',
-                                            determinatedIconChar: '&#xf111',
+                                            checkedIconMap: 'kijs.iconMap.Fa.circle-check',
+                                            uncheckedIconMap: 'kijs.iconMap.Fa.circle',
+                                            determinatedIconMap: 'kijs.iconMap.Fa.circle-dot',
                                             valueChecked: 'Ein',
                                             valueDeterminated: 'wedernoch',
                                             valueUnchecked: 'Aus',
@@ -612,7 +653,7 @@ kit.App = class kit_App {
                                             elements: [
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf0d0',
+                                                    iconMap: 'kijs.iconMap.Fa.comment-sms',
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -652,9 +693,9 @@ kit.App = class kit_App {
                                             iconColorField: 'Color',
                                             helpText: 'Hilfe Text!',
                                             data: [
-                                                {id:1, Bezeichnung:'blau', Icon:'&#xf111', Color:'#0088ff' },
-                                                {id:2, Bezeichnung:'grün', Icon:'&#xf111', Color:'#88ff00' },
-                                                {id:3, Bezeichnung:'pink', Icon:'&#xf111', Color:'#ff0088' }
+                                                {id:1, Bezeichnung:'blau', Icon:0xf111, Color:'#0088ff' },
+                                                {id:2, Bezeichnung:'grün', Icon:0xf111, Color:'#88ff00' },
+                                                {id:3, Bezeichnung:'pink', Icon:0xf111, Color:'#ff0088' }
                                             ],
                                             value: [2,3],
                                             on: {
@@ -665,7 +706,7 @@ kit.App = class kit_App {
                                             elements: [
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf0d0',
+                                                    iconMap: 'kijs.iconMap.Fa.comment',
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -718,9 +759,9 @@ kit.App = class kit_App {
                                             iconColorField: 'Color',
                                             required: true,
                                             data: [
-                                                {id:1, Bezeichnung:'blau', Icon:'&#xf111', Color:'#0088ff' },
-                                                {id:2, Bezeichnung:'grün', Icon:'&#xf111', Color:'#88ff00' },
-                                                {id:3, Bezeichnung:'pink', Icon:'&#xf111', Color:'#ff0088' }
+                                                {id:1, Bezeichnung:'blau', Icon:0xf111, Color:'#0088ff' },
+                                                {id:2, Bezeichnung:'grün', Icon:0xf111, Color:'#88ff00' },
+                                                {id:3, Bezeichnung:'pink', Icon:0xf111, Color:'#ff0088' }
                                             ],
                                             //value: 2,
                                             on: {
@@ -748,7 +789,7 @@ kit.App = class kit_App {
                                             elements: [
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf0d0',
+                                                    iconMap: 'kijs.iconMap.Fa.dog',
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -780,7 +821,7 @@ kit.App = class kit_App {
                                             elements: [
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf0d0',
+                                                    iconMap: 'kijs.iconMap.Fa.crow',
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -859,7 +900,7 @@ kit.App = class kit_App {
                                             elements:[
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf00d',
+                                                    iconMap: 'kijs.iconMap.Fa.bahai',
                                                     tooltip: 'Feld leeren',
                                                     on: {
                                                         click: function() {
@@ -950,7 +991,7 @@ kit.App = class kit_App {
                                             elements: [
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf0d0',
+                                                    iconMap: 'kijs.iconMap.Fa.eraser',
                                                     tooltip: 'Feld leeren',
                                                     on: {
                                                         click: function() {
@@ -998,7 +1039,7 @@ kit.App = class kit_App {
                                             elements:[
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf0d0',
+                                                    iconMap: 'kijs.iconMap.Fa.plus',
                                                     caption: 'neuer Wert',
                                                     on: {
                                                         click: function() {
@@ -1028,7 +1069,7 @@ kit.App = class kit_App {
                                             elements: [
                                                 {
                                                     xtype: 'kijs.gui.Button',
-                                                    iconChar: '&#xf00d',
+                                                    iconMap: 'kijs.iconMap.Fa.trash-can',
                                                     on: {
                                                         click: function() {
                                                             this.parent.value = '';
@@ -1044,7 +1085,8 @@ kit.App = class kit_App {
                                         },{
                                             xtype: 'kijs.gui.field.Email',
                                             name: 'email',
-                                            label: 'E-Mail'
+                                            label: 'E-Mail',
+                                            showLinkButton: true
                                         },{
                                             xtype: 'kijs.gui.field.Combo',
                                             name: 'Land',
@@ -1071,7 +1113,7 @@ kit.App = class kit_App {
                                             helpText: 'Bitte geben Sie hier Ihre Bemerkungen ein!',
                                             elements: [{
                                                 xtype: 'kijs.gui.Button',
-                                                iconChar: '&#xf00d',
+                                                iconMap: 'kijs.iconMap.Fa.horse',
                                                 cls: 'kijs-inline'
                                             }]
                                         },{
@@ -1091,17 +1133,17 @@ kit.App = class kit_App {
                                                 marginBottom: '4px'
                                             },
                                             data: [
-                                                {id:1, Bezeichnung:'blau', Icon:'&#xf111', Color:'#0088ff' },
-                                                {id:2, Bezeichnung:'grün', Icon:'&#xf111', Color:'#88ff00' },
-                                                {id:3, Bezeichnung:'pink', Icon:'&#xf111', Color:'#ff0088' },
-                                                {id:4, Bezeichnung:'türkis', Icon:'&#xf111', Color:'#00ff88' },
-                                                {id:5, Bezeichnung:'orange', Icon:'&#xf111', Color:'#ff8800' },
-                                                {id:6, Bezeichnung:'viollet', Icon:'&#xf111', Color:'#8800ff' },
-                                                {id:7, Bezeichnung:'dunkelgrau', Icon:'&#xf111', Color:'#666666' },
-                                                {id:8, Bezeichnung:'grau', Icon:'&#xf111', Color:'#999999' },
-                                                {id:9, Bezeichnung:'hellgrau', Icon:'&#xf111', Color:'#bbbbbb' },
-                                                {id:10, Bezeichnung:'weiss', Icon:'&#xf111', Color:'#ffffff' },
-                                                {id:11, Bezeichnung:'schwarz', Icon:'&#xf111', Color:'#000000' }
+                                                {id:1, Bezeichnung:'blau', Icon:0xf111, Color:'#0088ff' },
+                                                {id:2, Bezeichnung:'grün', Icon:0xf111, Color:'#88ff00' },
+                                                {id:3, Bezeichnung:'pink', Icon:0xf111, Color:'#ff0088' },
+                                                {id:4, Bezeichnung:'türkis', Icon:0xf111, Color:'#00ff88' },
+                                                {id:5, Bezeichnung:'orange', Icon:0xf111, Color:'#ff8800' },
+                                                {id:6, Bezeichnung:'viollet', Icon:0xf111, Color:'#8800ff' },
+                                                {id:7, Bezeichnung:'dunkelgrau', Icon:0xf111, Color:'#666666' },
+                                                {id:8, Bezeichnung:'grau', Icon:0xf111, Color:'#999999' },
+                                                {id:9, Bezeichnung:'hellgrau', Icon:0xf111, Color:'#bbbbbb' },
+                                                {id:10, Bezeichnung:'weiss', Icon:0xf111, Color:'#ffffff' },
+                                                {id:11, Bezeichnung:'schwarz', Icon:0xf111, Color:'#000000' }
                                             ],
                                             value: [2,3],
                                             on: {
@@ -1184,19 +1226,19 @@ kit.App = class kit_App {
                                     },
                                     footerElements: [
                                         {
-                                            xtype: 'kijs.gui.MenuButton',
+                                            xtype: 'kijs.gui.Button',
                                             caption: 'Menü',
-                                            iconChar: '&#xf135',
-                                            elements: [
+                                            iconMap: 'kijs.iconMap.Fa.bars',
+                                            menuElements: [
                                                 {
                                                     caption:'Hallo 1'
                                                 },{
                                                     caption:'Hallo 3',
-                                                    iconChar: '&#xf135'
+                                                    iconMap: 'kijs.iconMap.Fa.brain',
                                                 }, '-', {
-                                                    xtype: 'kijs.gui.MenuButton',
+                                                    xtype: 'kijs.gui.Button',
                                                     caption:'MULTI',
-                                                    elements: (function(){
+                                                    menuElements: (function(){
                                                         let steps=150, p = [];
                                                         for (let i=0; i<steps; i++) {
                                                             p.push({
@@ -1206,9 +1248,9 @@ kit.App = class kit_App {
                                                         return p;
                                                     })()
                                                 },{
-                                                    xtype: 'kijs.gui.MenuButton',
+                                                    xtype: 'kijs.gui.Button',
                                                     caption:'ENDLESS',
-                                                    elements: (function(){
+                                                    menuElements: (function(){
                                                         let steps=20, p = [{
                                                                 caption:'ÄTSCH NICHTS DA'
                                                             }];
@@ -1216,9 +1258,9 @@ kit.App = class kit_App {
                                                             p = [{
                                                                     caption: 'Stufe ' + i + ' von ' + steps
                                                                 },{
-                                                                    xtype: 'kijs.gui.MenuButton',
+                                                                    xtype: 'kijs.gui.Button',
                                                                     caption:'Nächste Stufe',
-                                                                    elements:p
+                                                                    menuElements:p
                                                                 }];
                                                         }
                                                         return p;
@@ -1228,7 +1270,7 @@ kit.App = class kit_App {
                                         },{
                                             xtype: 'kijs.gui.Button',
                                             caption: 'Menü',
-                                            iconChar: '&#xf0d8',
+                                            iconMap: 'kijs.iconMap.Fa.heart-circle-minus',
                                             on: {
                                                 click: function() {
                                                     let spinBox = new kijs.gui.SpinBox({
@@ -1498,13 +1540,13 @@ kit.App = class kit_App {
                                 {
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Datumsbereich',
-                                    iconChar: '&#xf017',
+                                    iconMap: 'kijs.iconMap.Fa.calendar-days',
                                     on: {click: function() {
                                         let window = new kijs.gui.Window({
                                             target: this.parent.parent.down('addressPanel'),
                                             targetDomProperty: 'innerDom',
                                             caption: 'Datumsbereich',
-                                            iconChar: '&#xf017',
+                                            iconMap: 'kijs.iconMap.Fa.calendar-days',
                                             collapsible: 'top',
                                             maximized: false,
                                             modal: true,
@@ -1520,13 +1562,13 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Uhrzeit',
-                                    iconChar: '&#xf017',
+                                    iconMap: 'kijs.iconMap.Fa.clock',
                                     on: {click: function() {
                                         let window = new kijs.gui.Window({
                                             target: this.parent.parent.down('addressPanel'),
                                             targetDomProperty: 'innerDom',
                                             caption: 'Fenster',
-                                            iconChar: '&#xf017',
+                                            iconMap: 'kijs.iconMap.Fa.window-restore',
                                             collapsible: 'top',
                                             maximized: false,
                                             modal: true,
@@ -1551,11 +1593,11 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Progress Bar',
-                                    iconChar: '&#xf0ae',
+                                    iconMap: 'kijs.iconMap.Fa.bars-progress',
                                     on: {click: function() {
                                         let pgWin = new kijs.gui.Window({
                                             caption: 'Progressbar',
-                                            iconChar: '&#xf2d0',
+                                            iconMap: 'kijs.iconMap.Fa.bars-progress',
                                             collapsible: 'top',
                                             modal: false,
 //                                            height: 200,
@@ -1607,11 +1649,11 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Fenster',
-                                    iconChar: '&#xf2d0',
+                                    iconMap: 'kijs.iconMap.Fa.person-through-window',
                                     on: {click: function() {
                                         let window = new kijs.gui.Window({
                                             caption: 'Fenster',
-                                            iconChar: '&#xf2d0',
+                                            iconMap: 'kijs.iconMap.Fa.person-through-window',
                                             collapsible: 'top',
                                             modal: false,
                                             height: 200,
@@ -1664,11 +1706,11 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Fenster modal',
-                                    iconChar: '&#xf2d0',
+                                    iconMap: 'kijs.iconMap.Fa.window-maximize',
                                     on: {click: function() {
                                         let window = new kijs.gui.Window({
                                             caption: 'Fenster',
-                                            iconChar: '&#xf2d0',
+                                            iconMap: 'kijs.iconMap.Fa.window-maximize',
                                             collapsible: 'top',
                                             modal: true,
                                             height: 160,
@@ -1680,7 +1722,7 @@ kit.App = class kit_App {
                                                 {
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'weiteres Fenster',
-                                                    iconChar: '&#xf2d0'
+                                                    iconChar: 0xf2d0
                                                 }
                                             ]
                                         });
@@ -1688,7 +1730,7 @@ kit.App = class kit_App {
                                         window.elements[0].on('click', function() {
                                             let window2 = new kijs.gui.Window({
                                                 caption: 'Fenster',
-                                                iconChar: '&#xf2d0',
+                                                iconMap: 'kijs.iconMap.Fa.window-maximize',
                                                 collapsible: 'top',
                                                 //modal: true,
                                                 target: window.dom.node.parentNode,
@@ -1701,13 +1743,13 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Fenster modal mit target+maximiert',
-                                    iconChar: '&#xf2d0',
+                                    iconMap: 'kijs.iconMap.Fa.window-maximize',
                                     on: {click: function() {
                                         let window = new kijs.gui.Window({
                                             target: this.parent.parent.down('addressPanel'),
                                             targetDomProperty: 'innerDom',
                                             caption: 'Fenster',
-                                            iconChar: '&#xf2d0',
+                                            iconMap: 'kijs.iconMap.Fa.window-maximize',
                                             collapsible: 'top',
                                             maximized: true,
                                             modal: true,
@@ -1719,7 +1761,7 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Lademaske',
-                                    iconChar: '&#xf1ce',
+                                    iconMap: 'kijs.iconMap.Fa.mask',
                                     on: {click: function() {
                                         let addressPanel = this.parent.parent.down('addressPanel');
                                         addressPanel.displayWaitMask = !addressPanel.displayWaitMask;
@@ -1727,7 +1769,7 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Lochmaske',
-                                    iconChar: '&#xf192',
+                                    iconMap: 'kijs.iconMap.Fa.masks-theater',
                                     on: {click: function() {
                                         let addressPanel = this.parent.parent.down('addressPanel');
                                         let maske = new kijs.gui.ApertureMask({
@@ -1743,14 +1785,14 @@ kit.App = class kit_App {
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Neu laden',
-                                    iconChar: '&#xf021',
+                                    iconMap: 'kijs.iconMap.Fa.arrows-rotate',
                                     on: {click: function() {
                                         location.reload();
                                     }}
                                 },{
                                     xtype: 'kijs.gui.Button',
                                     caption: 'Schliessen',
-                                    iconChar: '&#xf00d',
+                                    iconMap: 'kijs.iconMap.Fa.store-slash',
                                     on: {click: function() {
                                         viewport.destruct();
                                     }}
@@ -1759,7 +1801,7 @@ kit.App = class kit_App {
                             footerBarElements:[
                                 {
                                     xtype: 'kijs.gui.Button',
-                                    iconChar: '&#xf085',
+                                    iconMap: 'kijs.iconMap.Fa.cat',
                                     badgeText: '2'
                                 }
                             ]
@@ -1772,7 +1814,7 @@ kit.App = class kit_App {
                         },{
                             xtype: 'kijs.gui.Panel',
                             caption: 'Vorschau',
-                            iconChar: '&#xf2c8',
+                            iconMap: 'kijs.iconMap.Fa.magnifying-glass',
                             collapsible: 'right',
                             width: 240,
                             cls: 'kijs-flexrow',
@@ -1782,7 +1824,7 @@ kit.App = class kit_App {
                             headerBarElements:[
                                 {
                                     xtype: 'kijs.gui.Button',
-                                    iconChar: '&#xf02f',
+                            iconMap: 'kijs.iconMap.Fa.print',
                                     badgeText: '5',
                                     on: {
                                         click: function(e) {
@@ -1896,3 +1938,4 @@ kit.App = class kit_App {
     }
 
 };
+//80.219.144.161
