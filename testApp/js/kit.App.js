@@ -119,7 +119,7 @@ kit.App = class kit_App {
                                 },
                                 context: this
                             }
-                            
+
                             /*menu: {
                                 elements: [
                                     {
@@ -158,7 +158,7 @@ kit.App = class kit_App {
                                                 } else {
                                                     viewport.theme = 'light';
                                                 }
-                                                
+
                                                 // Bei ACE-Editoren auch das theme wechseln
                                                 viewport.down('centerPanel').down('editor').render();
                                                 viewport.down('rightPanel').down('editor').render();
@@ -215,6 +215,40 @@ kit.App = class kit_App {
                             }
                         }
                     ]
+                }, {
+                    xtype: 'kijs.gui.TabPanel',
+                    caption: 'TabPanel',
+                    height: 200,
+                    draggable: true,
+                    data: [
+                        { caption: 'Testtab 1', name: 'Testtab1', iconMap: 'kijs.iconMap.Fa.frog', elements: [
+                                {
+                                    xtype: 'kijs.gui.field.DateTime'
+                                }
+                            ]
+                        },
+                        { caption: 'Testtab 2', iconMap: 'kijs.iconMap.Fa.cow', elements: [
+                                {
+                                    xtype: 'kijs.gui.field.Display',
+                                    value: 'Test'
+                                }
+                            ] },
+                        { caption: 'Testtab 3', elements: [
+                                {
+                                    xtype: 'kijs.gui.field.Text'
+                                }
+                            ]},
+                        { caption: 'Testtab 4', iconMap: 'kijs.iconMap.Fa.dove', closable: true },
+                        { caption: 'Testtab 5', closable: true }
+                    ],
+                    on: {
+                        tabClick: function (e) {
+                            if (e.raiseElement.name === 'Testtab1') {
+                                e.element.addTab({caption: 'Testtab ADD', iconMap: 'kijs.iconMap.Fa.dragon', closable: true});
+                            }
+                        },
+                        context: this
+                    }
                 },{
                     xtype: 'kijs.gui.Container',
                     cls: 'kijs-flexrow',
@@ -224,6 +258,18 @@ kit.App = class kit_App {
                     },
                     elements: [
                         // LEFT
+                        {
+                            xtype: 'kijs.gui.TabPanel',
+                            mode: 'vertical',
+                            draggable: true,
+                            data: [
+                                { caption: 'Testtab 1', iconMap: 'kijs.iconMap.Fa.atom' },
+                                { caption: 'Testtab 2', iconMap: 'kijs.iconMap.Fa.fire' },
+                                { caption: 'Testtab 3', iconMap: 'kijs.iconMap.Fa.disease', closable: true },
+                                { caption: 'Testtab 4'},
+                                { caption: 'Testtab 5', closable: true }
+                            ]
+                        },
                         {
                             xtype: 'kijs.gui.Panel',
                             caption: 'Navigation',

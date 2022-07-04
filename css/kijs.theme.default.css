@@ -9,7 +9,7 @@
     --accentColor: #1f90f2;
     --accentColor2: #d9ecfc;
     --accentColor3: #ff9900;
-    
+
     --errorColor: #c23c45;
     --errorColorLight: #f4d9d9;
 
@@ -17,7 +17,7 @@
     --helpColorLight: #d9ecfc;
 
     --okColor: #61c259;
-    
+
     --grey0: #fff;
     --grey1: #fff;
     --grey2: #f6f6f6;
@@ -37,15 +37,15 @@
     --accentColor: #2299ff;
     --accentColor2: #2D2D38;
     --accentColor3: #ff9900;
-    
+
     --errorColor: #be6280;
     --errorColorLight: #6a3446;
 
     --helpColor: #6295be;
     --helpColorLight: #405d75;
-    
+
     --okColor: #0da100;
-    
+
     --grey0: #000;
     --grey1: #2d2d2d;
     --grey2: #333;
@@ -122,7 +122,25 @@
 
     --window-footer-button-focus-fontColor: var(--grey9);
 
-    
+    /* Tabs */
+    --tab-bkgrndColor: #f6f6f6;
+    --tab-borderColor: #d2d2d2;
+    --tab-fontColor: #000;
+    --tab-fontSize: 11px;
+
+    --tab-icon-fontColor: #555;
+
+    --tab-active-bkgrndColor: #ddd;
+
+    --tab-focus-bkgrndColor: #ddd;
+    --tab-focus-borderColor: #ddd;
+    --tab-focus-fontColor: #000;
+
+    --tab-disabled-fontColor: #888;
+
+
+
+
     /* Badge */
     --badge-bkgrndColor: var(--accentColor3);
     --badge-fontColor: var(--grey9);
@@ -167,7 +185,7 @@
     --field-disabled-fontColor: var(--grey7);
 
     --field-error-bkgrndColor: var(--errorColorLight);
-    
+
     /* Range */
     --range-bkgrndColor: var(--grey6);
     --range-btnColor: var(--grey8);
@@ -202,7 +220,7 @@
     --clock-bkgrndColor: var(--grey3);
     --clock-fontColor: var(--grey9);
     --clock-pointer-bkgrndColor: var(--accentColor);
-    
+
 
     /* Help/Error Icon */
     --icon-error-bkgrndColor: var(--errorColorLight);
@@ -231,7 +249,7 @@
     --bar-fontColor: var(--grey9);
     --bar-bkgrndColor: #4a4a4a;
     --badge-fontColor: var(--grey0);
-    
+
     /* Toolbox-Button in einer Bar */
     --bar-button-icon-fontColor: var(--grey8);
     --bar-button-icon-disabled-fontColor: var(--grey6);

@@ -208,9 +208,9 @@ div.kijs-container {
 div.kijs-container-inner {
     position: relative;
     flex: 1 1 auto;
-    
+
     font-family: var(--default-fontFamily);
-    
+
     -webkit-user-select: none;  /* Safari */
     user-select: none;
 
@@ -525,6 +525,165 @@ div.kijs-window {
 }
 
 
+/* ******************
+   * Tab
+   ****************** */
+button.kijs-tab {
+    position: relative;
+    border-radius: 0 8px 0 0;
+    padding: 3px 8px;
+    background-color: var(--tab-bkgrndColor);
+    border: 1px solid var(--tab-borderColor);
+    cursor: pointer;
+    outline: none;
+
+    > .kijs-icon {
+        color: var(--tab-icon-fontColor);
+    }
+
+    > .kijs-icon2 {
+        margin-left: 4px;
+    }
+
+    > .kijs-icon:not(:empty) + .kijs-caption:not(:empty) {
+        margin-left: 4px;
+    }
+
+    > .kijs-caption {
+        font-family: var(--default-fontFamily);
+        font-size: var(--tab-fontSize);
+        color: var(--tab-fontColor);
+    }
+
+    > .kijs-badge {
+        position: absolute;
+        display: inline-block;
+        top: -2px;
+        right: -2px;
+        height: 14px;
+        min-width: 14px;
+        border-radius: 50%;
+        padding: 0;
+        font-family: var(--default-fontFamily);
+        font-size: var(--badge-fontSize);
+        line-height: 14px;
+        color: var(--badge-fontColor);
+        text-align: center;
+        background-color: var(--badge-bkgrndColor);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    > .kijs-tab-closeIcon {
+        border: none;
+        margin: 0 0 0 8px;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    &.kijs-vertical {
+        display: flex;
+        padding: 8px 3px;
+        border-radius: 0 0 0 8px;
+        flex-direction: column-reverse;
+
+        > .kijs-caption {
+            writing-mode: tb-rl;
+            transform: rotate(180deg);
+            margin: 0 auto 4px auto;
+        }
+
+        > .kijs-icon {
+            margin: auto;
+        }
+
+        > .kijs-icon2 {
+            margin-bottom: 4px;
+        }
+
+        > .kijs-tab-closeIcon {
+            margin: 0 auto 8px auto;
+        }
+    }
+
+    &.kijs-active {
+        background-color: var(--tab-focus-bkgrndColor);
+        border: 1px solid var(--tab-focus-borderColor);
+    }
+
+    &:hover {
+        background-color: var(--tab-focus-bkgrndColor);
+        border: 1px solid var(--tab-focus-borderColor);
+    }
+
+    &:focus {
+        border: 1px solid var(--tab-focus-borderColor);
+    }
+
+    &:hover > .kijs-caption,
+    &:focus > .kijs-caption {
+        color: var(--tab-focus-fontColor);
+    }
+
+    &.kijs-default {
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.8);
+    }
+
+    &.kijs-disabled {
+        background-color: var(--tab-bkgrndColor);
+        border: 1px solid var(--tab-borderColor);
+        cursor: auto;
+
+        > .kijs-caption,
+        > .kijs-icon {
+            color: var(--tab-disabled-fontColor);
+        }
+
+        > .kijs-badge {
+            background-color: var(--badge-disabled-bkgrndColor);
+            color: var(--badge-disabled-fontColor);
+        }
+    }
+}
+
+
+/* ******************
+   * TabPanel
+   ****************** */
+div.kijs-tabpanel {
+    > .kijs-container-inner {
+        display: flex;
+        flex-direction: column;
+
+        > .kijs-tabpanel-button-container {
+
+            > .kijs-container-inner {
+                display: flex;
+            }
+        }
+
+        > .kijs-tabpanel-container {
+            border: 1px solid var(--tab-borderColor);
+        }
+    }
+
+    &.kijs-vertical {
+        > .kijs-container-inner {
+            flex-direction: row;
+
+            > .kijs-tabpanel-button-container {
+
+                > .kijs-container-inner {
+                    flex-direction: column;
+                }
+            }
+
+            > .kijs-tabpanel-container {
+
+            }
+        }
+    }
+}
 
 
 /* ******************
@@ -901,18 +1060,18 @@ div.kijs-menu-spinbox {
         &.kijs-hidden {
             display: none;
         }
-        
+
         > .kijs-caption {
             flex: 1;
         }
         > .kijs-caption:first-child {
             margin-left: 22px;
         }
-        
+
         > .kijs-icon {
             width: 18px;
         }
-        
+
         > .kijs-icon2 {
             text-align: right;
         }
@@ -1481,7 +1640,7 @@ div.kijs-monthpicker {
         font-family: var(--default-fontFamily);
         font-size: var(--field-fontSize);
         color: var(--default-fontColor);
-        
+
         .kijs-monthpicker-monthdiv {
             flex: 2;
             display: flex;
@@ -1785,7 +1944,7 @@ div.kijs-progressbar {
         font-size: var(--default-fontSize);
         line-height: var(--default-lineHeight);
         color: var(--default-fontColor);
-        
+
         .error {
             padding: 0;
             color: red;
@@ -1832,7 +1991,7 @@ div.kijs-field {
     display: flex;
     flex-direction: row;
     min-height: 25px;
-    
+
     > .kijs-label {
         display: block;
         flex: none;
@@ -1916,17 +2075,17 @@ div.kijs-field {
             cursor: default;
         }
     }
-    
+
     &.kijs-disableFlex {
         > .kijs-inputwrapper {
             flex: none;
         }
-        
+
         > .kijs-spacer {
             flex: 1;
         }
     }
-    
+
     &.kijs-label-ontop {
         flex-wrap: wrap;
 
@@ -2106,7 +2265,7 @@ div.kijs-field-datetime {
 
     > .kijs-inputwrapper {
         height: 25px;
-        
+
         > input {
             display: block;
             height: 100%;
@@ -2137,7 +2296,7 @@ div.kijs-field-datetime {
             background-color: var(--field-disabled-bkgrndColor);
         }
     }
-    
+
     &.kijs-disableFlex {
         > .kijs-inputwrapper {
             flex: none;
@@ -2419,7 +2578,7 @@ div.kijs-field-range {
             background-color: var(--field-focus-borderColor);
         }
     }
-    
+
     &.kijs-error  > .kijs-inputwrapper > input {
         background-color: var(--field-error-bkgrndColor);
     }
@@ -2555,7 +2714,7 @@ div.kijs-field-switch {
             border: 1px solid var(--field-borderColor);
             vertical-align: top;
             background-color: var(--field-bkgrndColor);
-            
+
             > .kijs-togglePoint {
                 display: inline-block;
                 height: 20px;
@@ -2564,7 +2723,7 @@ div.kijs-field-switch {
                 background-color: var(--field-item-bkgrndColor);
                 transition: margin-left 0.2s;
             }
-            
+
             &:focus {
                 border-color: var(--field-focus-borderColor);
             }
@@ -2574,7 +2733,7 @@ div.kijs-field-switch {
                 }
             }
         }
-        
+
         > .kijs-icon {
             margin: 2px 4px 0 0;
             height: 15px;
@@ -2593,7 +2752,7 @@ div.kijs-field-switch {
             color: var(--field-fontColor);
         }
     }
-    
+
     &.kijs-checked {
         > .kijs-inputwrapper {
             > .kijs-toggleBorder {
@@ -2605,16 +2764,16 @@ div.kijs-field-switch {
             }
         }
     }
-    
+
     &.kijs-disabled, &.kijs-readonly {
         > .kijs-inputwrapper {
             > * {
                 color: var(--field-disabled-fontColor);
             }
-            
+
             > .kijs-toggleBorder {
                 background-color: var(--field-bkgrndColor);
-                
+
                 > .kijs-togglePoint {
                     background-color: var(--field-disabled-fontColor);
                 }
