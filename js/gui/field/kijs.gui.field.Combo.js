@@ -65,7 +65,8 @@ kijs.gui.field.Combo = class kijs_gui_field_Combo extends kijs.gui.field.Field {
             minChars: 'auto',
             valueField: 'value',
             captionField: 'caption',
-            iconCharField: 'iconChar'
+            iconCharField: 'iconChar',
+            iconMapField: 'iconMap'
         });
 
        // Mapping für die Zuweisung der Config-Eigenschaften
@@ -83,12 +84,13 @@ kijs.gui.field.Combo = class kijs_gui_field_Combo extends kijs.gui.field.Field {
             facadeFnArgs: { target: 'facadeFnArgs', context: this._listViewEl },
             rpc: { target: 'rpc', context: this._listViewEl },
 
-            minChars: { target: 'minChars', prio: 2}, // Nicht beachtet wenn remoteSort false ist
+            minChars: { target: 'minChars', prio: 2}, // Nicht beachtet, wenn remoteSort false ist
 
             captionField: { target: 'captionField', context: this._listViewEl },
             iconCharField: { target: 'iconCharField', context: this._listViewEl },
             iconClsField: { target: 'iconClsField', context: this._listViewEl },
             iconColorField: { target: 'iconColorField', context: this._listViewEl },
+            iconMapField: { target: 'iconMapField', context: this._listViewEl },
             tooltipField: { target: 'tooltipField', context: this._listViewEl },
             valueField: { target: 'valueField', context: this._listViewEl },
 

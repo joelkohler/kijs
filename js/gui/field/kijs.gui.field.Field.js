@@ -105,6 +105,7 @@ kijs.gui.field.Field = class kijs_gui_field_Field extends kijs.gui.Container {
         });   
         
         this._maxLength = null;
+        this._minLength = null;
         this._required = false;
         this._submitValue = true;
         this._originalValue = null;
@@ -152,6 +153,7 @@ kijs.gui.field.Field = class kijs_gui_field_Field extends kijs.gui.Container {
             inputMode: { target: 'inputMode' },
 
             maxLength: true,
+            minLength: true,
             readOnly: { target: 'readOnly' },   // deaktiviert das Feld, die Buttons bleiben aber aktiv (siehe auch disabled)
             required: true,
             submitValue: true,
@@ -716,6 +718,13 @@ kijs.gui.field.Field = class kijs_gui_field_Field extends kijs.gui.Container {
             }
         }
 
+        // Minimale Länge
+        if (!kijs.isEmpty(this._minLength)) {
+            if (!kijs.isEmpty(value) && value.length < this._minLength) {
+                this._errors.push(kijs.getText('Dieses Feld muss mindestens %1 Zeichen enthalten', '', this._minLength));
+            }
+        }
+
         // Maximale Länge
         if (!kijs.isEmpty(this._maxLength)) {
             if (!kijs.isEmpty(value) && value.length > this._maxLength) {
@@ -730,7 +739,7 @@ kijs.gui.field.Field = class kijs_gui_field_Field extends kijs.gui.Container {
                     this._errors.push(error);
 
                 } else if (kijs.isArray(error)) {
-                    kijs.Array.concat(this._errors, error);
+                    this._errors = kijs.Array.concat(this._errors, error);
                 }
             }
         }

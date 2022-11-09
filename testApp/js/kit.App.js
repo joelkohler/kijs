@@ -34,7 +34,7 @@ kit.App = class kit_App {
     run() {
         let _this = this;
 
-        document.title = 'kijs ' + kijs.version + ' - JavaScript GUI library by netas.ch'
+        document.title = 'kijs ' + kijs.version + ' - JavaScript GUI library by netas.ch';
 
         // ViewPort erstellen
         let viewport = new kijs.gui.ViewPort({
@@ -119,61 +119,6 @@ kit.App = class kit_App {
                                 },
                                 context: this
                             }
-
-                            /*menu: {
-                                elements: [
-                                    {
-                                        xtype: 'kijs.gui.field.OptionGroup',
-                                        name: 'cssFile',
-                                        label: 'Design',
-                                        labelWidth: 74,
-                                        valueField: 'id',
-                                        captionField: 'Bezeichnung',
-                                        style: {
-                                            margin: '10px'
-                                        },
-                                        data: [
-                                            {id:'kijs.theme.default.css', Bezeichnung:'Standard' },
-                                            {id:'kijs.theme.old.css', Bezeichnung:'Alt' },
-                                            {id:'kijs.theme.joel.css', Bezeichnung:'Joel' }
-                                        ],
-                                        value: 'kijs.theme.default.css',
-                                        on: {
-                                            input: function(e) {
-                                                kijs.Dom.cssFileReplace(e.oldValue, e.value);
-                                            }
-                                        }
-                                    },{
-                                        xtype: 'kijs.gui.field.Checkbox',
-                                        name: 'darkMode',
-                                        label: 'Dark mode',
-                                        labelWidth: 74,
-                                        style: {
-                                            margin: '10px'
-                                        },
-                                        on: {
-                                            input: function(e) {
-                                                if (e.value) {
-                                                    viewport.theme = 'dark';
-                                                } else {
-                                                    viewport.theme = 'light';
-                                                }
-
-                                                // Bei ACE-Editoren auch das theme wechseln
-                                                viewport.down('centerPanel').down('editor').render();
-                                                viewport.down('rightPanel').down('editor').render();
-                                            }
-                                        }
-                                    }
-                                ],
-                                on: {
-                                    show: function(e) {
-                                        const elDarkmode = viewport.down('mainPanel').headerBar.containerRightEl.down('btnTheme').menu.down('darkMode');
-                                        elDarkmode.value = kijs.Dom.themeGet() === 'dark';
-                                    },
-                                    context: this
-                                }
-                            }*/
                         },{
                             xtype: 'kijs.gui.Button',
                             iconMap: 'kijs.iconMap.Fa.circle-question'
@@ -1233,9 +1178,9 @@ kit.App = class kit_App {
                                             valueField: 'value',
                                             captionField: 'caption',
                                             data: [
-                                                {caption: 'Herr', value: 'm'},
-                                                {caption: 'Frau', value: 'w'},
-                                                {caption: 'Familie', value: 'f'}
+                                                {caption: 'Herr', value: 'm', iconMap: 'kijs.iconMap.Fa.person' },
+                                                {caption: 'Frau', value: 'w', iconMap: 'kijs.iconMap.Fa.person-dress'},
+                                                {caption: 'Familie', value: 'f', iconMap: 'kijs.iconMap.Fa.people-group'}
                                             ],
                                             elements: [
                                                 {
@@ -1279,9 +1224,10 @@ kit.App = class kit_App {
                                         },{
                                             xtype: 'kijs.gui.field.Memo',
                                             name: 'Bemerkungen',
-                                            label: 'Bemerkungen (test)',
+                                            label: 'Bemerkungen (testX)',
                                             value: 'Dieses Bemerkungsfeld hat\nmehrere Zeilen!',
                                             helpText: 'Bitte geben Sie hier Ihre Bemerkungen ein!',
+                                            height: 100,
                                             elements: [{
                                                 xtype: 'kijs.gui.Button',
                                                 iconMap: 'kijs.iconMap.Fa.horse',
@@ -1678,6 +1624,14 @@ kit.App = class kit_App {
                                             on: {click: function(e) {
                                                 kijs.gui.MsgBox.confirm('Test', 'Confirm!', function(e) {
                                                     kijs.gui.MsgBox.alert('Es wurde geklickt auf ', e.btn);
+                                                });
+                                            }}
+                                        },{
+                                            xtype: 'kijs.gui.Button',
+                                            caption: 'Prompt',
+                                            on: {click: function(e) {
+                                                kijs.gui.MsgBox.prompt('Test', 'Confirm!', 'Eingabe', 'Wert!', function(e) {
+                                                    kijs.gui.MsgBox.alert('Es wurde geklickt auf ', e.btn + ' / Eingabe ' + e.value);
                                                 });
                                             }}
                                         },{
