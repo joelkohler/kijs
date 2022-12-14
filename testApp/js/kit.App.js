@@ -220,11 +220,10 @@ kit.App = class kit_App {
                                                     style: {
                                                         flex: 1
                                                     }
-                                                }/*,
+                                                },
                                                 {
                                                     xtype: 'kijs.gui.Button',
                                                     caption: 'Wechsel zu 2',
-                                                    iconChar: 0xf0d0,
                                                     tooltip: 'test',
                                                     on: {
                                                         click: function() {
@@ -232,7 +231,7 @@ kit.App = class kit_App {
                                                             testcontainerstack.activateAnimated('testcontainerstackpanel_2');
                                                         }
                                                     }
-                                                }*/
+                                                }
                                             ]
                                         },{
                                             xtype: 'kijs.gui.Panel',
@@ -1577,6 +1576,14 @@ kit.App = class kit_App {
                                             on: {click: function(e) {
                                                 kijs.gui.MsgBox.confirm('Test', 'Confirm!', function(e) {
                                                     kijs.gui.MsgBox.alert('Es wurde geklickt auf ', e.btn);
+                                                });
+                                            }}
+                                        },{
+                                            xtype: 'kijs.gui.Button',
+                                            caption: 'Prompt',
+                                            on: {click: function(e) {
+                                                kijs.gui.MsgBox.prompt('Test', 'Confirm!', 'Eingabe', 'Wert!', function(e) {
+                                                    kijs.gui.MsgBox.alert('Es wurde geklickt auf ', e.btn + ' / Eingabe ' + e.value);
                                                 });
                                             }}
                                         },{

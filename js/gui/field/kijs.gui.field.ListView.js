@@ -36,6 +36,7 @@ kijs.gui.field.ListView = class kijs_gui_field_ListView extends kijs.gui.field.F
 
             captionField: { target: 'captionField', context: this._listView },
             iconCharField: { target: 'iconCharField', context: this._listView },
+            iconMapField: { target: 'iconMapField', context: this._listView },
             iconClsField: { target: 'iconClsField', context: this._listView },
             iconColorField: { target: 'iconColorField', context: this._listView },
             tooltipField: { target: 'tooltipField', context: this._listView },
@@ -85,6 +86,9 @@ kijs.gui.field.ListView = class kijs_gui_field_ListView extends kijs.gui.field.F
 
     get elements() { return this._listView.elements; }
 
+    get facadeFnArgs() { return this._listView.facadeFnArgs; }
+    set facadeFnArgs(val) { this._listView.facadeFnArgs = val; }
+
     get facadeFnLoad() { return this._listView.facadeFnLoad; }
     set facadeFnLoad(val) { this._listView.facadeFnLoad = val; }
 
@@ -122,6 +126,9 @@ kijs.gui.field.ListView = class kijs_gui_field_ListView extends kijs.gui.field.F
         }
     }
 
+    get selectType() { return this._listView.selectType; }
+    set selectType(val) { this._listView.selectType = val; }
+
     // overwrite
     get value() { return this._listView.value; }
     set value(val) {
@@ -150,14 +157,16 @@ kijs.gui.field.ListView = class kijs_gui_field_ListView extends kijs.gui.field.F
      * @returns {undefined}
      */
     load(args) {
-        this._listView.load(args);
+        return this._listView.load(args);
     }
 
     // overwrite
     render(superCall) {
         super.render(true);
 
-        this._listView.rpc = this.rpc;
+        if (this.rpc) {
+            this._listView.rpc = this.rpc;
+        }
         this._listView.renderTo(this._inputWrapperDom.node);
 
         // Event afterRender auslösen
