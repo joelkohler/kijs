@@ -1177,10 +1177,9 @@ kit.App = class kit_App {
                                         },{
                                             xtype: 'kijs.gui.field.Memo',
                                             name: 'Bemerkungen',
-                                            label: 'Bemerkungen (testX)',
+                                            label: 'Bemerkungen (test)',
                                             value: 'Dieses Bemerkungsfeld hat\nmehrere Zeilen!',
                                             helpText: 'Bitte geben Sie hier Ihre Bemerkungen ein!',
-                                            height: 100,
                                             elements: [{
                                                 xtype: 'kijs.gui.Button',
                                                 iconMap: 'kijs.iconMap.Fa.horse',

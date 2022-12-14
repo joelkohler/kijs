@@ -134,6 +134,9 @@ kijs.gui.grid.HeaderCell = class kijs_gui_grid_HeaderCell extends kijs.gui.Eleme
             config = Object.assign({}, this._defaultConfig, config);
             this.applyConfig(config, true);
         }
+
+        // Listener
+        this.on('afterFirstRenderTo', this._checkCaptionSize, this);
     }
 
     // --------------------------------------------------------------
@@ -272,6 +275,18 @@ kijs.gui.grid.HeaderCell = class kijs_gui_grid_HeaderCell extends kijs.gui.Eleme
 
     // PROTECTED
     /**
+     * Wenn das caption in der Zelle nicht Platz hat, wird ein Tooltip erstellt
+     * @param cell
+     */
+    _checkCaptionSize() {
+        if (this._captionDom.node.offsetWidth > this.width) {
+            this.tooltip = this.caption;
+        } else {
+            this.tooltip = null;
+        }
+    }
+
+    /**
      * Aktualisiert die Overlay-Position aufgrund der Mauszeigerposition
      * @param {Number} xAbs     Mausposition clientX
      * @param {Number} yAbs     Mausposition clientY
@@ -290,7 +305,7 @@ kijs.gui.grid.HeaderCell = class kijs_gui_grid_HeaderCell extends kijs.gui.Eleme
     }
 
     // LISTENER
-    _onDdStart(e) {
+    _onDdStart() {
         // wenn splitter nicht bewegt wird, drag starten
         if (this._splitterMove) {
             return false;
@@ -356,7 +371,7 @@ kijs.gui.grid.HeaderCell = class kijs_gui_grid_HeaderCell extends kijs.gui.Eleme
     }
 
     _onSplitterMouseUp(e) {
-        // Beim ersten auslösen Listeners gleich wieder entfernen
+        // Beim ersten Auslösen des Listeners, gleich wieder entfernen
         kijs.Dom.removeEventListener('mousemove', document, this);
         kijs.Dom.removeEventListener('mouseup', document, this);
 
@@ -371,6 +386,8 @@ kijs.gui.grid.HeaderCell = class kijs_gui_grid_HeaderCell extends kijs.gui.Eleme
         }
 
         this._splitterMove = false;
+
+        this._checkCaptionSize();
     }
 
     // Overwrite
