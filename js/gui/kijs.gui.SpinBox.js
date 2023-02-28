@@ -98,7 +98,7 @@ kijs.gui.SpinBox = class kijs_gui_SpinBox extends kijs.gui.Container {
         if (kijs.Array.contains(['min', 'max', 'fit', 'none'], val)) {
             this._autoSize = val;
         } else {
-            throw new kijs.Error(`Unkown format on config "autoSize"`);
+            throw new kijs.Error(`Unknown format on config "autoSize"`);
         }
     }
 
