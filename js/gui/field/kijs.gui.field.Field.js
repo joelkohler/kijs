@@ -469,6 +469,10 @@ kijs.gui.field.Field = class kijs_gui_field_Field extends kijs.gui.Container {
     get submitValue() { return this._submitValue; }
     set submitValue(val) { this._submitValue = !!val; }
 
+    set validationFn(val) { this._validationFn = val; }
+
+    set validationFnContext(val) { this._validationFnContext = val; }
+
     // Muss überschrieben werden
     get value() { return null; }
     set value(val) {}
