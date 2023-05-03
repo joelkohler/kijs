@@ -333,7 +333,7 @@ kijs.gui.SpinBox = class kijs_gui_SpinBox extends kijs.gui.Container {
                     if (this._targetEl.hasOwnProperty('spinBoxWidth')) {
                         width = this._targetEl.spinBoxWidth;
                     } else {
-                        width = this._targetEl.width;
+                        width = this._targetEl[this.targetDomProperty].width;
                     }
                 }
                 
