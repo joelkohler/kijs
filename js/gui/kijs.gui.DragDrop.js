@@ -9,8 +9,9 @@ kijs.gui.DragDrop = class kijs_gui_DragDrop {
     // __source {kijs.gui.Element} Element das aktuell gezogen wird
     // __target {kijs.gui.Element} Ziel-Element
     // __data   {Object} Objekt für die Zuweisung beliebiger Daten
+    // __dropMarkerCls {String} zusätzliche CSS-Klasse für den Drop Marker
     // __dropMarkerDom {kijs.gui.Dom} Marker, der die Einfügeposition visualisiert
-    
+
     
     // --------------------------------------------------------------
     // STATIC GETTERS / SETTERS
@@ -27,6 +28,14 @@ kijs.gui.DragDrop = class kijs_gui_DragDrop {
         } else {
             throw new kijs.Error(`kijs.gui.DragDrop.data must be an object.`);
         }
+    }
+
+    static get dropMarkerCls() {
+        return this.__dropMarkerCls;
+    }
+
+    static set dropMarkerCls(val) {
+        this.__dropMarkerCls = val;
     }
     
     // kijs.gui.Element der aktuellen Drag&Drop-Operation
@@ -100,6 +109,11 @@ kijs.gui.DragDrop = class kijs_gui_DragDrop {
                 nodeTagName: tagName,
                 cls: 'kijs-dropmarker'
             });
+        }
+
+        // CSS-Klasse hinzufügen
+        if (this.dropMarkerCls) {
+            this.__dropMarkerDom.clsAdd(this.dropMarkerCls);
         }
         
         // Grösse anpassen
